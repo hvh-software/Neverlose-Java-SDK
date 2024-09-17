@@ -1,6 +1,8 @@
 package cn.fluxhvh.neverlose;
 
 public class NeverloseSDK {
+    public static boolean debug = System.getProperty("neverlose.debug") != null && Boolean.parseBoolean(System.getProperty("neverlose.debug"));
+
     public static int userId = System.getProperty("neverlose.userId") == null ? 0 : Integer.parseInt(System.getProperty("neverlose.userId"));
     public static String secret = System.getProperty("neverlose.secret");
 

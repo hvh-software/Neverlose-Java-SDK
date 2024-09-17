@@ -1,5 +1,6 @@
 package cn.fluxhvh.neverlose.utils;
 
+import cn.fluxhvh.neverlose.NeverloseSDK;
 import cn.fluxhvh.neverlose.requests.BaseRequest;
 import cn.fluxhvh.neverlose.response.BaseResponse;
 import com.alibaba.fastjson2.JSON;
@@ -16,9 +17,13 @@ public class NetworkUtils {
     private static final OkHttpClient client;
 
     static {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        client = new OkHttpClient().newBuilder().addInterceptor(interceptor).build();
+        if (NeverloseSDK.debug) {
+            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            client = new OkHttpClient().newBuilder().addInterceptor(interceptor).build();
+        } else {
+            client = new OkHttpClient();
+        }
     }
 
     /**
