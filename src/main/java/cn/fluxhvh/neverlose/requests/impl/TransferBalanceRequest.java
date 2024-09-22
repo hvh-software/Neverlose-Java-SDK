@@ -16,5 +16,5 @@ public class TransferBalanceRequest extends BaseRequest {
     private String username;
 
     @JSONField(name = "amount")
-    private double amount;
+    private int amount;
 }
